@@ -31,7 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="bottom|center_horizontal"
+                    android:gravity="bottom|center_horizontal|left"
                     android:text="Random Number Generation"
                     android:textSize="24sp" />
 
@@ -57,6 +57,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
         android:layout_weight="0.333"
         app:cardCornerRadius="8dp"
         app:cardUseCompatPadding="true">
@@ -77,7 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="bottom|center_horizontal"
+                    android:gravity="bottom|center_horizontal|left"
                     android:text="Constellation Number Gerneration"
                     android:textSize="24sp" />
 
@@ -123,7 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="bottom|center_horizontal"
+                    android:gravity="bottom|center_horizontal|left"
                     android:text="Name Number Generation"
                     android:textSize="24sp" />
 
