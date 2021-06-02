@@ -28,6 +28,19 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+     class WorkerRunner implements Runnable{
+         @Override
+         public void run() {
+             int i = 0;
+             for (i = 0; i < 20 && running; i++) {
+                 try {
+                     Thread.sleep(1000);
+                 } catch (InterruptedException e) {
+                 }
+                 Log.v(TAG2, "Runnable time=" + i);
+             }
+         }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,24 +51,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         running = true;
-
-        wt.run();
-
         wt = new WorkerThread();
+        wr = new Thread(new WorkerRunner());
 
-        wr = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                int i = 0;
-                for (i = 0; i < 20 && running; i++) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                    }
-                    Log.v(TAG2, "Runnable time=" + i);
-                }
-            }
-        });
         wt.start();
         wr.start();
         Log.v(TAG2, "Now I am in onStart");
