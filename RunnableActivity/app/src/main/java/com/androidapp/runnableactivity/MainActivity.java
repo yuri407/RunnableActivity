@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         running = true;
         wt = new WorkerThread();
-
         wr = new Thread(new Runnable() {
             @Override
             public void run() {
