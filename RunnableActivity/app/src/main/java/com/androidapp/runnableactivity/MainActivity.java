@@ -7,27 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
-    Thread wr, wt;
+    Thread wr;
+    WorkerThread wt;
     boolean running= true;
 
     String TAG = "THREAD";
     String TAG2 = "THREAD2";
 
-    class WorkerThread extends  Thread{
-        @Override
-        public void run() {
-            int i =0;
-            for(i = 0; i<20 && running; i++){
-                try{
-                    Thread.sleep(1000);
-
-                }catch (InterruptedException e){
-
-                }
-                Log.v(TAG,"Thread time = "+i);
-            }
-        }
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +23,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         running = true;
+
         wt = new WorkerThread();
+        wt.run();
+
         wr = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -54,6 +43,21 @@ public class MainActivity extends AppCompatActivity {
         wt.start();
         wr.start();
         Log.v(TAG2, "Now I am in onStart");
+    }
+
+    class WorkerThread extends Thread{
+        @Override
+        public void run() {
+            int i =0;
+            for(i = 0; i < 20 && running; i++){
+                try{
+                    Thread.sleep(1000);
+
+                }catch (InterruptedException e) {
+                }
+                Log.v(TAG,"Thread time = "+i);
+            }
+        }
     }
 
     @Override
